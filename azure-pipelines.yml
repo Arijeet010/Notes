@@ -23,7 +23,7 @@ steps:
 
 - script: |
     cd notesAPISoln/notesAPI
-    rm -rf obj
+    if exist obj rd /s /q obj
   displayName: 'Clean obj Folder'
 
 - task: NuGetCommand@2
