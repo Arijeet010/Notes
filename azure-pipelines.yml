@@ -21,9 +21,19 @@ steps:
     version: '8.x'
     installationPath: $(Agent.ToolsDirectory)/dotnet
 
+- script: |
+    cd notesAPISoln/notesAPI
+    rm -rf obj
+  displayName: 'Clean obj Folder'
+
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
+
+- script: |
+    cd notesAPISoln/notesAPI
+    dotnet restore
+  displayName: 'Restore Dependencies'
 
 - task: VSBuild@1
   inputs:
